@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eed891;
+}
+.wrapper {
+  position: relative;
+  height: 330px;
+  width: 620px;
+  perspective: 1000px; /* Make sure this is here for the 3D effect */
+}
+.flip-card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #d48600;
+  transform-style: preserve-3d; /* Ensure preserve-3d is set */
+  transition: transform 1s ease-in-out; /* Flip animation */
+}
+.flip-card.flipped {
+  transform: rotateY(180deg); /* This flips the card */
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: #d48600;
+  border-top: 2px solid #cc6600;
+  border-left: 2px solid #cc6600;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden; /* Ensure the back of the card is hidden */
+  position: absolute;
+}
+
+.back.card {
+  transform: rotateY(180deg); /* This hides the back side initially */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .wrapper .flip-card {
+    cursor: pointer;
+  }
+}

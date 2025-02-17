@@ -15,18 +15,21 @@ body {
   position: relative;
   height: 330px;
   width: 620px;
-  perspective: 1000px; /* Make sure this is here for the 3D effect */
+  perspective: 1000px; /* Perspective applied here */
 }
+
 .flip-card {
   position: relative;
   height: 100%;
   width: 100%;
   background: #d48600;
-  transform-style: preserve-3d; /* Ensure preserve-3d is set */
+  transform-style: preserve-3d; /* Ensure 3D transform */
   transition: transform 1s ease-in-out; /* Flip animation */
+  cursor: pointer;
 }
+
 .flip-card.flipped {
-  transform: rotateY(180deg); /* This flips the card */
+  transform: rotateY(180deg); /* Flip the card */
 }
 
 .card {
@@ -39,17 +42,22 @@ body {
   border-top: 2px solid #cc6600;
   border-left: 2px solid #cc6600;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  backface-visibility: hidden; /* Ensure the back of the card is hidden */
+  backface-visibility: hidden; /* Ensure back of the card is hidden */
   position: absolute;
 }
 
 .back.card {
-  transform: rotateY(180deg); /* This hides the back side initially */
+  transform: rotateY(180deg); /* Hide the back side initially */
 }
 
-/* Media query for mobile devices */
+/* Mobile-specific styles */
 @media (max-width: 768px) {
-  .wrapper .flip-card {
-    cursor: pointer;
+  .wrapper {
+    width: 300px; /* Make sure the wrapper size is responsive */
+    height: 500px;
+  }
+
+  .flip-card {
+    perspective: 1000px; /* Ensure perspective is applied on mobile as well */
   }
 }
